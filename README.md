@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Alan Faerverguer
 
-## Getting Started
+Personal portfolio built as a bilingual (ES/EN) editorial-style "dossier". Full-stack developer profile with projects, capabilities, experience, stack, and a working contact form.
 
-First, run the development server:
+Live: [alanfaerverguer.vercel.app](https://alanfaerverguer.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Next.js 16** (App Router, `proxy.ts` convention, async `params`)
+- **React 19** + TypeScript
+- **Tailwind CSS v4** with a custom "Dossier" design system (paper/ink tokens, rule lines, dot grids, SVG grain overlay)
+- **next-intl 4** for i18n with `as-needed` locale prefix (`/` → Spanish, `/en` → English)
+- **Resend** + **Zod** for the contact form (server actions, no client-side mail keys)
+- **Vercel Analytics**
+- Fonts: Source Serif 4, IBM Plex Serif, JetBrains Mono (via `next/font`)
+
+## Structure
+
+```
+src/
+├── app/
+│   ├── [locale]/
+│   │   ├── layout.tsx        # generateStaticParams + metadata per locale
+│   │   └── page.tsx          # single-page editorial layout
+│   ├── actions.ts            # server action: sendMessage (Zod + Resend)
+│   ├── icon.tsx              # generated 32×32 favicon (AF monogram)
+│   └── globals.css           # design tokens + utility classes
+├── components/
+│   ├── ContactForm.tsx       # useActionState + progressive enhancement
+│   └── LocaleSwitcher.tsx
+├── i18n/
+│   ├── routing.ts            # locales = ["es", "en"]
+│   ├── request.ts
+│   └── navigation.ts
+└── proxy.ts                  # next-intl middleware (Next 16 rename)
+
+messages/
+├── es.json
+└── en.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All textual content lives in `messages/*.json` — no copy lives in components.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp .env.local.example .env.local   # fill in Resend vars
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+### Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Key | Required | Notes |
+|---|---|---|
+| `RESEND_API_KEY` | Yes | From [resend.com/api-keys](https://resend.com/api-keys) |
+| `RESEND_FROM` | No | Defaults to a fallback. Must use a Resend-verified domain in production. `onboarding@resend.dev` works for sandbox testing. |
+| `RESEND_TO` | No | Inbox for incoming messages. Defaults to the author's address. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js loads `.env.local` at startup only — restart `npm run dev` after editing.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev     # start dev server
+npm run build   # production build (static + proxy)
+npm run start   # serve the production build
+npm run lint    # ESLint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+Designed for Vercel — zero config. Import the repo, set the three Resend env vars, deploy. Previews on every PR; `main` ships to production.
+
+## License
+
+MIT.

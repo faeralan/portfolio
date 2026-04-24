@@ -1,26 +1,224 @@
 @import "tailwindcss";
 
+/* ────────────────────────────────────────────────────────────────── */
+/* Design tokens — Dossier (Atlas × Blueprint mix)                    */
+/* ────────────────────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper:        #F3EDDF;
+  --paper-dark:   #EDE4D0;
+  --ink:          #1A2333;
+  --ink-soft:     #2E3646;
+  --muted:        #6B6357;
+  --rule:         rgba(26, 35, 51, 0.18);
+  --rule-soft:    rgba(26, 35, 51, 0.10);
+  --grid-dot:     rgba(26, 35, 51, 0.08);
+  --accent:       #C8331F;
+  --accent-soft:  rgba(200, 51, 31, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper:       var(--paper);
+  --color-paper-dark:  var(--paper-dark);
+  --color-ink:         var(--ink);
+  --color-ink-soft:    var(--ink-soft);
+  --color-muted:       var(--muted);
+  --color-accent:      var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: var(--font-source-serif), Georgia, serif;
+  --font-body:    var(--font-ibm-serif), Georgia, serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain (non-blocking, multiply) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.24 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Utility classes */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rule-line   { border-top: 1px solid var(--rule); }
+.rule-soft   { border-top: 1px solid var(--rule-soft); }
+.rule-double {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  height: 5px;
+}
+
+.dot-grid-bg {
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+.dot-grid-fine {
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Section numerals — italic serif big in accent */
+.numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+}
+
+/* Chip (status / category) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+}
+
+.chip-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chip-filled {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+
+/* CTA button (primary, filled) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.btn-ghost:hover { border-color: var(--ink); color: var(--accent); }
+
+/* Form underline inputs */
+.input-underline {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 2px 10px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.18s ease;
+}
+.input-underline::placeholder { color: var(--muted); opacity: 0.7; }
+.input-underline:focus { border-color: var(--accent); }
+.input-underline[aria-invalid="true"] { border-color: var(--accent); }
+
+select.input-underline {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M1 3 L5 7 L9 3' stroke='%231A2333' stroke-width='1.2' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 24px;
+}
+textarea.input-underline {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Hover tint for work rows */
+.work-row {
+  transition: background-color 0.2s ease, padding 0.2s ease;
+}
+.work-row:hover {
+  background-color: var(--accent-soft);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
 }

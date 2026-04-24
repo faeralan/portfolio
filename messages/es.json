@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Alan Faerverguer — Software Engineer",
+    "description": "Desarrollador full-stack con 10+ años construyendo aplicaciones production-grade end-to-end. TypeScript, .NET, NestJS, React, Angular, Next.js."
+  },
+  "folio": {
+    "title": "Alan Faerverguer",
+    "navWorks": "§01 Proyectos",
+    "navCapabilities": "§02 Capacidades",
+    "navExperience": "§03 Experiencia",
+    "navEducation": "§04 Formación",
+    "navStack": "§05 Stack",
+    "navContact": "§06 Contacto",
+    "toggleEs": "ES",
+    "toggleEn": "EN"
+  },
+  "hero": {
+    "metaEditor": "Alan Faerverguer",
+    "metaOrigin": "Buenos Aires · AR · Remote",
+    "metaLanguage": "ES / EN",
+    "labelEditor": "Editor",
+    "labelOrigin": "Origen",
+    "labelLanguage": "Idioma",
+    "name": "Alan Faerverguer",
+    "subtitle": "Desarrollador full-stack. 10+ años construyendo producto end-to-end.",
+    "lead": "Trabajo en TypeScript/JavaScript (NestJS, React, Next.js, Angular) y .NET. Experiencia en arquitectura SaaS multi-tenant, marketplaces e integraciones con IA. Foco en clean architecture, APIs escalables y entrega real.",
+    "ctaPrimary": "Ver proyectos",
+    "ctaSecondary": "Contacto"
+  },
+  "works": {
+    "numeral": "§01",
+    "heading": "Proyectos",
+    "labelProblem": "Problema",
+    "labelSolution": "Solución",
+    "labelStack": "Stack",
+    "items": [
+      {
+        "id": "W.01",
+        "category": "Marketplace",
+        "year": "2025 —",
+        "title": "Plataforma marketplace MVP desde cero",
+        "subtitle": "Whynda · Remote",
+        "problem": "Construir una plataforma marketplace con auth multi-método y pagos desde cero (0→1).",
+        "solution": "API REST con 30+ controladores cubriendo autenticación, órdenes, pagos, envíos, catálogo y mensajería. Auth multi-método: JWT, Google OAuth, Apple OAuth, OTP vía Brevo. Integración Stripe + Plaid (tokenización de tarjeta y transferencias bancarias). Mensajería en tiempo real con Socket.io. Storage AWS S3 y Cloudflare R2. Redis para sesiones y cache. Serilog para logging estructurado. Docker.",
+        "stack": ["ASP.NET 8", "C#", "Angular 18", "TypeScript", "SQL Server", "Redis", "Docker", "Stripe", "Plaid", "Socket.io"]
+      },
+      {
+        "id": "W.02",
+        "category": "Booking",
+        "year": "2025",
+        "title": "Sistema de reserva de tickets para teatro",
+        "subtitle": "Freelance · Danzas Reina Reech",
+        "problem": "Digitalizar reservas de sala con pricing por niveles y confirmación por WhatsApp.",
+        "solution": "Plataforma full-stack de booking con mapa dinámico de sala (mobile-first), generación de tickets QR con Puppeteer, confirmaciones por WhatsApp, export XLSX y pricing por niveles.",
+        "stack": ["NestJS 10", "React 19", "PostgreSQL", "TypeORM", "Puppeteer"]
+      },
+      {
+        "id": "W.03",
+        "category": "SaaS Académico",
+        "year": "2025 — 2026",
+        "title": "Gestión integral de academia de danza",
+        "subtitle": "Freelance · Danzas Reina Reech",
+        "problem": "Operar una academia: inscripciones, asistencia, cuotas, exámenes y liquidación de profesores en un solo sistema.",
+        "solution": "Plataforma integral con pipeline de inscripción y progresión de alumnos, estructura académica con correlativas, seguimiento de asistencia, sistema de cuotas con pagos en partes, calificación de exámenes, reporte de liquidación de profesores y RBAC granular.",
+        "stack": ["NestJS 11", "Next.js 16", "Prisma", "PostgreSQL", "AWS S3"]
+      },
+      {
+        "id": "W.04",
+        "category": "SaaS IA",
+        "year": "2026",
+        "title": "Plataforma SaaS de ventas con agente IA",
+        "subtitle": "Freelance",
+        "problem": "E-commerce conversacional vía WhatsApp con escala multi-tenant.",
+        "solution": "Arquitectura SaaS multi-tenant con NestJS 11 + Fastify y Supabase. Agente conversacional construido con Google Gemini 2.5 Flash (ADK) para e-commerce sobre WhatsApp. Jobs asíncronos con BullMQ/Redis. Integraciones con MercadoPago, Tiendanube y WhatsApp Cloud API.",
+        "stack": ["NestJS 11", "Fastify", "Supabase", "BullMQ", "Redis", "Gemini 2.5 Flash ADK", "WhatsApp Cloud", "MercadoPago", "Tiendanube"]
+      },
+      {
+        "id": "W.05",
+        "category": "Open Source",
+        "year": "2026",
+        "title": "mcp-arca-afip",
+        "subtitle": "MIT · github.com/faeralan/mcp-arca-afip",
+        "problem": "Consultar la documentación de los 49 web services de ARCA/AFIP es lento y ruidoso: manuales PDF, WSDLs y códigos de error dispersos.",
+        "solution": "Servidor MCP (Model Context Protocol) con pipeline RAG completo: scraping web, parsing de HTML/PDF/WSDL, chunking recursivo, embeddings (multilingual-e5-small vía Hugging Face Transformers) y SQLite + sqlite-vec como vector store. Pipeline de ingesta con Docker; rebuild mensual del índice vía GitHub Actions.",
+        "stack": ["TypeScript", "Node.js 20", "MCP SDK", "Hugging Face Transformers", "SQLite", "sqlite-vec", "Docker"],
+        "href": "https://github.com/faeralan/mcp-arca-afip"
+      }
+    ]
+  },
+  "capabilities": {
+    "numeral": "§02",
+    "heading": "Capacidades",
+    "colId": "ID",
+    "colCapability": "Capacidad",
+    "colDescription": "Descripción",
+    "items": [
+      { "id": "C.01", "name": "Producto end-to-end", "description": "Desde el spec hasta la release en producción. Backend, frontend, infraestructura y deploy." },
+      { "id": "C.02", "name": "Backend & APIs", "description": "APIs REST y SOAP, microservicios, jobs asíncronos e integraciones externas." },
+      { "id": "C.03", "name": "Arquitectura SaaS", "description": "Sistemas multi-tenant, autenticación, billing y observabilidad." },
+      { "id": "C.04", "name": "Integración de IA", "description": "Agentes conversacionales y workflows con LLMs (Google Gemini ADK)." },
+      { "id": "C.05", "name": "Automatización con IA", "description": "Orquestación de procesos de negocio con LLMs y agentes: pipelines end-to-end, ingesta y enriquecimiento de datos, tareas disparadas por eventos." },
+      { "id": "C.06", "name": "Modernización de legado", "description": "Refactors, migraciones tecnológicas y mejora continua." },
+      { "id": "C.07", "name": "Consultoría técnica", "description": "Code review, auditorías y mejora de procesos de equipo." }
+    ]
+  },
+  "experience": {
+    "numeral": "§03",
+    "heading": "Experiencia",
+    "items": [
+      {
+        "when": "Ago 2025 — presente",
+        "role": "Software Developer",
+        "company": "Whynda",
+        "description": "Plataforma marketplace MVP 0→1 sobre ASP.NET 8 + Angular 18. API REST con 30+ controladores, auth multi-método, Stripe, Plaid, Socket.io, AWS S3, Cloudflare R2.",
+        "location": "Remoto"
+      },
+      {
+        "when": "Abr 2025 — presente",
+        "role": "Software Developer",
+        "company": "Freelance",
+        "description": "Sistema de reserva de tickets (Danzas Reina Reech). Plataforma SaaS de ventas con agente IA sobre WhatsApp (en desarrollo).",
+        "location": "Buenos Aires"
+      },
+      {
+        "when": "Jul 2021 — Abr 2025",
+        "role": "Software Developer",
+        "company": "Ideagen Tritan",
+        "description": "Aplicaciones enterprise de salud para industria marítima (cruceros y cargueros globales). Módulos en Angular, PHP, Node.js. Mejora continua y nuevos workflows de delivery.",
+        "location": "Buenos Aires"
+      },
+      {
+        "when": "Mar 2021 — May 2022",
+        "role": "Software Developer",
+        "company": "Verifarma",
+        "description": "Sistema de administración para control de calidad farmacéutico. Contribución a migraciones tecnológicas del core de desarrollo.",
+        "location": "Buenos Aires"
+      },
+      {
+        "when": "Feb 2020 — Feb 2021",
+        "role": "Analyst Software Developer",
+        "company": "ATM Seguros",
+        "description": "E-commerce de aseguradora en Angular, Node.js, PHP. Sistema de notificaciones batch en Java. SQL Server triggers y stored procedures.",
+        "location": "Buenos Aires"
+      }
+    ]
+  },
+  "education": {
+    "numeral": "§04",
+    "heading": "Formación & Certificaciones",
+    "educationTitle": "Educación",
+    "certificationsTitle": "Certificaciones",
+    "educationItems": [
+      { "institution": "ORT Argentina", "title": "Tecnicatura Superior en Análisis de Sistemas", "years": "2019 — 2021" },
+      { "institution": "ORT Argentina", "title": "Tecnicatura en Informática", "years": "2011 — 2015" }
+    ],
+    "certifications": [
+      { "title": "React JS", "issuer": "CoderHouse", "year": "2024" },
+      { "title": "Backend Testing & Scalability", "issuer": "CoderHouse", "year": "2024" },
+      { "title": "Blockchain Ethereum Solidity", "issuer": "Education IT", "year": "2022" }
+    ]
+  },
+  "stack": {
+    "numeral": "§05",
+    "heading": "Stack técnico",
+    "categories": [
+      { "name": "Lenguajes", "items": ["TypeScript", "JavaScript", "C#", "Java", "SQL", "PHP"] },
+      { "name": "Backend", "items": ["NestJS", "ASP.NET 8", "Node.js", "Express", "BullMQ", "RabbitMQ", "Redis"] },
+      { "name": "Frontend", "items": ["Angular 18", "React 19", "Next.js", "Tailwind CSS", "Vue.js"] },
+      { "name": "Bases de datos", "items": ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "Supabase"] },
+      { "name": "Cloud & DevOps", "items": ["AWS (S3, Lambda)", "Docker", "Cloudflare R2", "Git", "Gitflow"] },
+      { "name": "Integraciones", "items": ["Stripe", "Plaid", "MercadoPago", "Socket.io", "WhatsApp Cloud API", "REST", "SOAP"] },
+      { "name": "IA / LLM", "items": ["Google Gemini AI (ADK)", "Desarrollo de agentes conversacionales"] },
+      { "name": "Metodologías", "items": ["Scrum", "Kanban", "Clean Architecture", "DDD"] }
+    ]
+  },
+  "contact": {
+    "numeral": "§06",
+    "heading": "Contacto",
+    "directoryTitle": "Directorio",
+    "colChannel": "Canal",
+    "colAddress": "Dirección",
+    "colResponse": "Respuesta",
+    "directory": [
+      { "key": "email", "channel": "Email", "address": "faeralan@gmail.com", "response": "< 24 h", "href": "mailto:faeralan@gmail.com" },
+      { "key": "whatsapp", "channel": "WhatsApp", "address": "+54 9 11 5577 2451", "response": "< 2 h", "href": "https://wa.me/5491155772451" },
+      { "key": "linkedin", "channel": "LinkedIn", "address": "linkedin.com/in/afaerverguer", "response": "—", "href": "https://linkedin.com/in/afaerverguer" },
+      { "key": "location", "channel": "Ubicación", "address": "Buenos Aires, Argentina", "response": "Remote-friendly", "href": null }
+    ],
+    "formTitle": "Contacto",
+    "formLabelName": "Nombre",
+    "formLabelEmail": "Email",
+    "formLabelPhone": "Teléfono",
+    "formLabelCompany": "Empresa (opcional)",
+    "formLabelType": "Tipo de proyecto",
+    "formLabelMessage": "Mensaje",
+    "formSubmit": "Enviar",
+    "formSending": "Enviando…",
+    "formSuccess": "Mensaje enviado. Te respondo en menos de 24 h.",
+    "formErrorGeneric": "No se pudo enviar. Probá de nuevo o escribime a faeralan@gmail.com.",
+    "formErrorValidation": "Revisá los campos marcados en rojo.",
+    "projectTypes": [
+      { "value": "new", "label": "Producto nuevo / MVP" },
+      { "value": "feature", "label": "Feature sobre producto existente" },
+      { "value": "migration", "label": "Migración o refactor" },
+      { "value": "integration", "label": "Integración" },
+      { "value": "consulting", "label": "Consultoría" },
+      { "value": "other", "label": "Otro" }
+    ]
+  },
+  "footer": {
+    "left": "© 2026 Alan Faerverguer · Buenos Aires",
+    "right": "Actualizado Abril 2026"
+  }
+}
