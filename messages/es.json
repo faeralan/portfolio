@@ -99,7 +99,7 @@
       { "id": "C.03", "name": "Arquitectura SaaS", "description": "Sistemas multi-tenant, autenticación, billing y observabilidad." },
       { "id": "C.04", "name": "Integración de IA", "description": "Agentes conversacionales y workflows con LLMs (Google Gemini ADK)." },
       { "id": "C.05", "name": "Automatización con IA", "description": "Orquestación de procesos de negocio con LLMs y agentes: pipelines end-to-end, ingesta y enriquecimiento de datos, tareas disparadas por eventos." },
-      { "id": "C.06", "name": "Modernización de legado", "description": "Refactors, migraciones tecnológicas y mejora continua." },
+      { "id": "C.06", "name": "Modernización de legacy", "description": "Refactors, migraciones tecnológicas y mejora continua." },
       { "id": "C.07", "name": "Consultoría técnica", "description": "Code review, auditorías y mejora de procesos de equipo." }
     ]
   },
