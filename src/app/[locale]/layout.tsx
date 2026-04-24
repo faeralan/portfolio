@@ -38,21 +38,37 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  const canonical = locale === routing.defaultLocale ? "/" : `/${locale}`;
+
   return {
     title: t("title"),
     description: t("description"),
     metadataBase: new URL("https://faeralan.dev"),
+    authors: [{ name: "Alan Faerverguer", url: "https://faeralan.dev" }],
+    creator: "Alan Faerverguer",
     openGraph: {
       title: t("title"),
       description: t("description"),
       locale,
       type: "profile",
+      url: canonical,
+      siteName: "Alan Faerverguer",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
     },
     alternates: {
-      languages: {
-        es: "/",
-        en: "/en",
-      },
+      canonical,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, l === routing.defaultLocale ? "/" : `/${l}`]),
+      ),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
     },
   };
 }
@@ -70,9 +86,43 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Alan Faerverguer",
+    jobTitle: "Full-stack Software Developer",
+    url: "https://faeralan.dev",
+    image: "https://faeralan.dev/opengraph-image",
+    email: "faeralan@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Buenos Aires",
+      addressCountry: "AR",
+    },
+    sameAs: [
+      "https://github.com/faeralan",
+      "https://linkedin.com/in/afaerverguer",
+    ],
+    knowsAbout: [
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "NestJS",
+      "React",
+      "Angular",
+      "ASP.NET",
+      "PostgreSQL",
+      "Clean Architecture",
+    ],
+  };
+
   return (
     <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
