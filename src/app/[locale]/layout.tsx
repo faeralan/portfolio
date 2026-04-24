@@ -41,7 +41,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    metadataBase: new URL("https://alanfaerverguer.vercel.app"),
+    metadataBase: new URL("https://faeralan.dev"),
     openGraph: {
       title: t("title"),
       description: t("description"),

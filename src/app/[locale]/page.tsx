@@ -144,12 +144,12 @@ export default async function Home({
             {experience.map((e, i) => (
               <div
                 key={`${e.company}-${i}`}
-                className="grid grid-cols-1 md:grid-cols-[180px_1.5fr_2fr_auto] gap-4 md:gap-6 py-5 rule-line border-t-0 border-b items-baseline"
+                className="grid grid-cols-1 md:grid-cols-[180px_1.5fr_2fr_140px] gap-4 md:gap-6 py-5 rule-line border-t-0 border-b items-baseline"
               >
                 <span className="mono-label">{e.when}</span>
                 <span className="font-display font-semibold text-[19px] md:text-[20px] leading-tight">
                   {e.role},{" "}
-                  <em className="not-italic text-[color:var(--accent)] font-normal italic">
+                  <em className="text-[color:var(--accent)] font-normal italic">
                     {e.company}
                   </em>
                 </span>
