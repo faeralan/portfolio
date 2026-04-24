@@ -2,7 +2,7 @@
 
 Personal portfolio built as a bilingual (ES/EN) editorial-style "dossier". Full-stack developer profile with projects, capabilities, experience, stack, and a working contact form.
 
-Live: [alanfaerverguer.vercel.app](https://alanfaerverguer.vercel.app)
+Live: [faeralan.dev](https://faeralan.dev)
 
 ## Stack
 
